@@ -4,10 +4,10 @@
 #define TRUE 1
 #define FALSE 0
 #define MAX_VERTICES 100
-#define INF 9999999
+#define INF 9999999 // 연결 없을 때 무한대 값
 
 typedef struct GraphType {
-	int n;
+	int n; // 정점의 수
 	int weight[MAX_VERTICES][MAX_VERTICES];
 } GraphType;
 
@@ -34,14 +34,14 @@ void printA(GraphType* g)
 }
 
 
-void floyd(GraphType* g)
+void floyd(GraphType* g) // 모든 정점에서 가는 모든 경우의 수 구해서 최솟값 구하기
 {
 
 	int i, j, k;
 	for (i = 0; i < g->n; i++)
 		for (j = 0; j < g->n; j++)
 			A[i][j] = g->weight[i][j];
-	printA(g);
+
 
 	for (k = 0; k < g->n; k++) {
 		for (i = 0; i < g->n; i++)
@@ -54,9 +54,9 @@ void floyd(GraphType* g)
 
 
 
-int main(void)
+int main(void) 
 {
-	GraphType g = { 10,
+	GraphType g = { 10,  // 그래프 정의
 	{{ 0, 3, INF, INF, INF, 11, 12, INF, INF, INF },
 	{ 3,  0, 5, 4, 1, 7, 8, INF, INF, INF },
 	{ INF, 5, 0, 2, INF, INF, 6, 5, INF, INF },
